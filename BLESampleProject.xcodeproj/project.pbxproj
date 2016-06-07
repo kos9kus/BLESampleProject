@@ -17,6 +17,7 @@
 		4155B5291D06EEC700B9B73E /* PureLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4155B5281D06EEC700B9B73E /* PureLayout.framework */; };
 		4155B52B1D0703EF00B9B73E /* KKCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4155B52A1D0703EF00B9B73E /* KKCentralManager.swift */; };
 		4155B52D1D07041700B9B73E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4155B52C1D07041700B9B73E /* CoreBluetooth.framework */; };
+		4155B52F1D0718B100B9B73E /* KKTableViewDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4155B52E1D0718B100B9B73E /* KKTableViewDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		4155B5281D06EEC700B9B73E /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = Carthage/Build/iOS/PureLayout.framework; sourceTree = "<group>"; };
 		4155B52A1D0703EF00B9B73E /* KKCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKCentralManager.swift; sourceTree = "<group>"; };
 		4155B52C1D07041700B9B73E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		4155B52E1D0718B100B9B73E /* KKTableViewDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKTableViewDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				410F48CB1D06E701000C0C05 /* AppDelegate.swift */,
 				410F48CD1D06E701000C0C05 /* KKMainViewController.swift */,
 				4155B52A1D0703EF00B9B73E /* KKCentralManager.swift */,
+				4155B52E1D0718B100B9B73E /* KKTableViewDataProvider.swift */,
 				410F48CF1D06E701000C0C05 /* Main.storyboard */,
 				410F48D21D06E701000C0C05 /* Assets.xcassets */,
 				410F48D41D06E701000C0C05 /* LaunchScreen.storyboard */,
@@ -232,6 +235,7 @@
 			files = (
 				410F48CE1D06E701000C0C05 /* KKMainViewController.swift in Sources */,
 				4155B52B1D0703EF00B9B73E /* KKCentralManager.swift in Sources */,
+				4155B52F1D0718B100B9B73E /* KKTableViewDataProvider.swift in Sources */,
 				410F48CC1D06E701000C0C05 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

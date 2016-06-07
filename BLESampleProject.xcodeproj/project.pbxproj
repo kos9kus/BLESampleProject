@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		410F48CC1D06E701000C0C05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410F48CB1D06E701000C0C05 /* AppDelegate.swift */; };
-		410F48CE1D06E701000C0C05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410F48CD1D06E701000C0C05 /* ViewController.swift */; };
+		410F48CE1D06E701000C0C05 /* KKMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410F48CD1D06E701000C0C05 /* KKMainViewController.swift */; };
 		410F48D11D06E701000C0C05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410F48CF1D06E701000C0C05 /* Main.storyboard */; };
 		410F48D31D06E701000C0C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410F48D21D06E701000C0C05 /* Assets.xcassets */; };
 		410F48D61D06E701000C0C05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410F48D41D06E701000C0C05 /* LaunchScreen.storyboard */; };
 		410F48E11D06E701000C0C05 /* BLESampleProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410F48E01D06E701000C0C05 /* BLESampleProjectUITests.swift */; };
 		410F48EC1D06E72F000C0C05 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410F48EB1D06E72F000C0C05 /* Default-568h@2x.png */; };
+		4155B5291D06EEC700B9B73E /* PureLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4155B5281D06EEC700B9B73E /* PureLayout.framework */; };
+		4155B52B1D0703EF00B9B73E /* KKCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4155B52A1D0703EF00B9B73E /* KKCentralManager.swift */; };
+		4155B52D1D07041700B9B73E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4155B52C1D07041700B9B73E /* CoreBluetooth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +32,7 @@
 /* Begin PBXFileReference section */
 		410F48C81D06E701000C0C05 /* BLESampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLESampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		410F48CB1D06E701000C0C05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		410F48CD1D06E701000C0C05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		410F48CD1D06E701000C0C05 /* KKMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KKMainViewController.swift; sourceTree = "<group>"; };
 		410F48D01D06E701000C0C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		410F48D21D06E701000C0C05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		410F48D51D06E701000C0C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +41,9 @@
 		410F48E01D06E701000C0C05 /* BLESampleProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLESampleProjectUITests.swift; sourceTree = "<group>"; };
 		410F48E21D06E701000C0C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		410F48EB1D06E72F000C0C05 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4155B5281D06EEC700B9B73E /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = Carthage/Build/iOS/PureLayout.framework; sourceTree = "<group>"; };
+		4155B52A1D0703EF00B9B73E /* KKCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKCentralManager.swift; sourceTree = "<group>"; };
+		4155B52C1D07041700B9B73E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4155B52D1D07041700B9B73E /* CoreBluetooth.framework in Frameworks */,
+				4155B5291D06EEC700B9B73E /* PureLayout.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +69,8 @@
 		410F48BF1D06E701000C0C05 = {
 			isa = PBXGroup;
 			children = (
+				4155B52C1D07041700B9B73E /* CoreBluetooth.framework */,
+				4155B5281D06EEC700B9B73E /* PureLayout.framework */,
 				410F48EB1D06E72F000C0C05 /* Default-568h@2x.png */,
 				410F48CA1D06E701000C0C05 /* BLESampleProject */,
 				410F48DF1D06E701000C0C05 /* BLESampleProjectUITests */,
@@ -81,7 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				410F48CB1D06E701000C0C05 /* AppDelegate.swift */,
-				410F48CD1D06E701000C0C05 /* ViewController.swift */,
+				410F48CD1D06E701000C0C05 /* KKMainViewController.swift */,
+				4155B52A1D0703EF00B9B73E /* KKCentralManager.swift */,
 				410F48CF1D06E701000C0C05 /* Main.storyboard */,
 				410F48D21D06E701000C0C05 /* Assets.xcassets */,
 				410F48D41D06E701000C0C05 /* LaunchScreen.storyboard */,
@@ -109,6 +120,7 @@
 				410F48C41D06E701000C0C05 /* Sources */,
 				410F48C51D06E701000C0C05 /* Frameworks */,
 				410F48C61D06E701000C0C05 /* Resources */,
+				4155B5271D06EE9F00B9B73E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -196,12 +208,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4155B5271D06EE9F00B9B73E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/PureLayout.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		410F48C41D06E701000C0C05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				410F48CE1D06E701000C0C05 /* ViewController.swift in Sources */,
+				410F48CE1D06E701000C0C05 /* KKMainViewController.swift in Sources */,
+				4155B52B1D0703EF00B9B73E /* KKCentralManager.swift in Sources */,
 				410F48CC1D06E701000C0C05 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,8 +363,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BLESampleProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kos.BLESampleProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -345,8 +379,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = BLESampleProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kos.BLESampleProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -394,6 +432,7 @@
 				410F48E71D06E701000C0C05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		410F48E81D06E701000C0C05 /* Build configuration list for PBXNativeTarget "BLESampleProjectUITests" */ = {
 			isa = XCConfigurationList;
@@ -402,6 +441,7 @@
 				410F48EA1D06E701000C0C05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

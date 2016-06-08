@@ -9,17 +9,17 @@
 import UIKit
 import CoreBluetooth
 
-protocol DataProtocol {
-    
-}
-
-protocol KKCentralManagerProtocolProvider {
-    associatedtype ObjectCentralManager
-    func updatePeripheral(newUpdate: DataProviderUpdate<ObjectCentralManager>)
-}
+//protocol DataProtocol {
+//    
+//}
+//
+//protocol KKCentralManagerProtocolProvider {
+//    associatedtype T
+//    func updatePeripheral(newUpdate: DataProviderUpdate<T>)
+//}
 
 protocol KKCentralManagerProtocolDelegate: class {
-    var sourcePresenter: KKCentralManagerProtocolProvider { get }
+    func didDiscoverNewPeripheral(peripheral: CBPeripheral)
     func didStateUpdate(managerState: KKCentralManagerStateType)
     func didConnectKKPerephiralType(perephiralType:KKCentralManagerPerephiralType)
 }
@@ -73,7 +73,7 @@ class KKCentralManager<Delegate: KKCentralManagerProtocolDelegate>: NSObject, CB
         }
         print("peripheral devices + \(peripheral.name)"  )
         print("advertisementData  \(advertisementData)" )
-//        delegate.sourcePresenter.didDiscoverNewPeripheral(peripheral)
+        delegate.didDiscoverNewPeripheral(peripheral)
     }
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {

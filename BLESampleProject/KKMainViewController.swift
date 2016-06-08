@@ -10,12 +10,31 @@ import UIKit
 import PureLayout
 
 class KKMainViewController: UIViewController {
+    
+    var tableView: UITableView = UITableView.newAutoLayoutView()
+    var headerView: UIView = UIView.newAutoLayoutView()
+    
+//    init() {
+//        super.init(nibName: nil, bundle: nil)
+//    }
+    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.view.addSubview(tableView)
+        self.view.addSubview(headerView)
     }
     
-    
+    private var didUpdateConstraint = false
+    override func updateViewConstraints() {
+        if !didUpdateConstraint {
+            ([tableView, headerView] as NSArray).autoDistributeViewsAlongAxis(.Horizontal, alignedTo: .Left, withFixedSpacing: 0)
+            didUpdateConstraint = true
+        }
+        super.updateViewConstraints()
+    }
 }
 

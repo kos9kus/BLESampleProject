@@ -9,8 +9,13 @@
 import UIKit
 import CoreBluetooth
 
+protocol DataProtocol {
+    
+}
+
 protocol KKCentralManagerProtocolProvider {
-    func didDiscoverNewPeripheral(peripheral: CBPeripheral)
+    associatedtype ObjectCentralManager
+    func updatePeripheral(newUpdate: DataProviderUpdate<ObjectCentralManager>)
 }
 
 protocol KKCentralManagerProtocolDelegate: class {
@@ -63,9 +68,12 @@ class KKCentralManager<Delegate: KKCentralManagerProtocolDelegate>: NSObject, CB
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+        guard centralManager == central else {
+            return
+        }
         print("peripheral devices + \(peripheral.name)"  )
         print("advertisementData  \(advertisementData)" )
-        delegate.sourcePresenter.didDiscoverNewPeripheral(peripheral)
+//        delegate.sourcePresenter.didDiscoverNewPeripheral(peripheral)
     }
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {

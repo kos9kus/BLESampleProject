@@ -15,6 +15,7 @@ class KKDevicesViewController: KKMainViewController {
         super.init(nibName: nil, bundle: nil)
         centralManager = KKCentralManager(delegate: self)
         tableDataSource = KKTableViewDataProvider(tableView: super.tableView, dataProvider: centralManager, delegate: self)
+        self.title = "Devices"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -23,11 +24,41 @@ class KKDevicesViewController: KKMainViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        headerCustomView = KKViewDevices(buttonHandler: {  [unowned self] (start) in
+            guard self.status == .BLEOn else {
+                self.alertViewController("BLE is unable")
+                return false
+            }
+            if (start) {
+                self.centralManager.startScanning()
+            } else {
+                self.centralManager.stopScanning()
+            }
+            return true
+        })
+        super.headerView.addSubview(headerCustomView)
+    }
+    
+    private var didUpdateConstraint = false
+    override func updateViewConstraints() {
+        if !didUpdateConstraint {
+            headerCustomView.autoCenterInSuperview()
+            didUpdateConstraint = true
+        }
+        super.updateViewConstraints()
     }
     
     // MARK - Private
     typealias Data = KKCentralManager<KKDevicesViewController>
+    
+    private var headerCustomView: KKViewDevices! {
+        didSet {
+            self.headerCustomView.statusLabel.text = "BLE \(status.titleType)"
+        }
+    }
+    
+    private var status: KKCentralManagerStateType = .BLEOff
+    
     private var centralManager: KKCentralManager<KKDevicesViewController>!
     private var tableDataSource: KKTableViewDataProvider<KKDevicesViewController, KKTableViewDeviceCell, Data>!
 }
@@ -38,7 +69,7 @@ extension KKDevicesViewController: KKCentralManagerProtocolDelegate {
     }
     
     func didStateUpdate(managerState: KKCentralManagerStateType) {
-        
+        status = managerState
     }
     
     func didConnectKKPerephiralType(perephiralType: KKCentralManagerPerephiralType) {

@@ -12,29 +12,41 @@ import PureLayout
 class KKMainViewController: UIViewController {
     
     var tableView: UITableView = UITableView.newAutoLayoutView()
-    var headerView: UIView = UIView.newAutoLayoutView()
     
-//    init() {
-//        super.init(nibName: nil, bundle: nil)
-//    }
+    var headerView: UIView = {
+        let view = UIView.newAutoLayoutView()
+        view.backgroundColor = .whiteColor()
+        return view
+    }()
     
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(tableView)
         self.view.addSubview(headerView)
+        self.view.addSubview(tableView)
+        self.view.setNeedsUpdateConstraints()
     }
     
     private var didUpdateConstraint = false
     override func updateViewConstraints() {
         if !didUpdateConstraint {
-            ([tableView, headerView] as NSArray).autoDistributeViewsAlongAxis(.Horizontal, alignedTo: .Left, withFixedSpacing: 0)
+            
+            tableView.autoPinEdgeToSuperviewEdge(.Left)
+            tableView.autoPinEdgeToSuperviewEdge(.Right)
+            
+            ([headerView, tableView] as NSArray).autoMatchViewsDimension(.Width)
+            ([headerView, tableView] as NSArray).autoDistributeViewsAlongAxis(.Vertical, alignedTo: .Vertical, withFixedSpacing: 0)
             didUpdateConstraint = true
         }
         super.updateViewConstraints()
+    }
+}
+
+extension KKMainViewController {
+    func alertViewController(message: String) {
+        let alertController = UIAlertController(title: "BLE", message: message, preferredStyle: .Alert)
+        let actionOk = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
+        alertController.addAction(actionOk)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
 

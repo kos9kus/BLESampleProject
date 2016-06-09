@@ -33,7 +33,7 @@ class KKCentralManager<Delegate: KKCentralManagerProtocolDelegate>: NSObject, CB
         centralManager = CBCentralManager(delegate: self, queue:nil)
     }
     
-    // MARK - KKCentralManagerProtocol 
+    // MARK - KKCentralManagerProtocol
     func startScanning() {
         centralManager.scanForPeripheralsWithServices(nil, options: nil)
     }
@@ -58,7 +58,7 @@ class KKCentralManager<Delegate: KKCentralManagerProtocolDelegate>: NSObject, CB
         case .PoweredOff:
             delegate.didStateUpdate(.BLEOff)
         default:
-            delegate.didStateUpdate(.BLEErrorOccur(error: KKCentralManagerStateType.defaultErrorDesctoption ) )
+            delegate.didStateUpdate(.BLEErrorOccur(error: KKCentralManagerStateType.defaultErrorDescription ) )
         }
     }
     
@@ -108,8 +108,34 @@ enum KKCentralManagerStateType {
     case BLEOn, BLEOff, BLEErrorOccur(error: NSError)
 }
 
-extension KKCentralManagerStateType {
-    static var defaultErrorDesctoption: NSError {
+extension KKCentralManagerStateType: Equatable {
+    static var defaultErrorDescription: NSError {
         return  NSError(domain: "Try to switch on/Off a bluetooth module", code: 105, userInfo: nil)
     }
+    
+    var titleType: String {
+        switch self {
+        case .BLEOn:
+            return "ON"
+        case .BLEOff:
+            return "OFF"
+        case .BLEErrorOccur(let error):
+            print(error.domain)
+            return "Error"
+        }
+    }
+}
+
+func ==(lhs: KKCentralManagerStateType, rhs: KKCentralManagerStateType) -> Bool {
+    switch (lhs, rhs) {
+    case (.BLEOn, .BLEOn):
+        return true
+    case (.BLEOff, .BLEOff):
+        return true
+    case (let .BLEErrorOccur(errorLhs), let .BLEErrorOccur(errorRhs) ):
+        return errorLhs.code == errorRhs.code
+    default:
+        break
+    }
+    return false
 }

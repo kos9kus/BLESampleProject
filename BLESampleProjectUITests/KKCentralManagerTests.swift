@@ -13,20 +13,24 @@ import UIKit
 
 class KKCentralManagerTests: XCTestCase {
     
-    let centralManagerUnderTest: KKCentralManagerUnderTest = KKCentralManagerUnderTest()
+    let centralManagerUnderTest = KKCentralManagerUnderTest()
     
     override func setUp() {
         super.setUp()
-        let expectation = expectationWithDescription("KKCentralManagerTests")
-        centralManagerUnderTest.asyncExpectation = expectation
     }
     
     // MARK - Peripheral
     
     func testDidGetNewPeripheral() {
-        let expectation = expectationWithDescription("testDidGetNewPeripheral")
-        centralManagerUnderTest.asyncExpectation = expectation
-        waitForExpectationsWithTimeout(5) { (error) in
+        centralManagerUnderTest.asyncExpectationDidStateUpdate = expectationWithDescription("testDidStateManager")
+        
+        waitForExpectationsWithTimeout(2) { (error) in
+            XCTAssertTrue(self.centralManagerUnderTest.state == .BLEOn)
+            self.centralManagerUnderTest.centralProject.startScanning()
+        }
+        
+        centralManagerUnderTest.asyncExpectationDidStateUpdate = expectationWithDescription("testDidGetNewPeripheral")
+        self.waitForExpectationsWithTimeout(10) { (error) in
             XCTAssert(self.centralManagerUnderTest.anyPeripheral != nil, "")
             print(self.centralManagerUnderTest.anyPeripheral)
         }
@@ -34,12 +38,14 @@ class KKCentralManagerTests: XCTestCase {
     
     // MARK - State
     func testStateError() { // Success is on simulator
+        centralManagerUnderTest.asyncExpectationDidStateUpdate = expectationWithDescription("testStateError")
         waitForExpectationsWithTimeout(2) { (error) in
-            XCTAssertTrue(self.centralManagerUnderTest.state == .BLEErrorOccur(error: KKCentralManagerStateType.defaultErrorDesctoption) )
+            XCTAssertTrue(self.centralManagerUnderTest.state == .BLEErrorOccur(error: KKCentralManagerStateType.defaultErrorDescription) )
         }
     }
     
     func testStateIsOff() {
+        centralManagerUnderTest.asyncExpectationDidStateUpdate = expectationWithDescription("testStateIsOff")
         waitForExpectationsWithTimeout(2) { (error) in
             XCTAssertTrue(self.centralManagerUnderTest.state == .BLEOff)
         }
@@ -51,8 +57,11 @@ public class KKCentralManagerUnderTest: NSObject, KKCentralManagerProtocolDelega
     
     var centralProject: KKCentralManager<KKCentralManagerUnderTest>!
     var state: KKCentralManagerStateType?
+    
     var anyPeripheral: CBPeripheral?
-    var asyncExpectation: XCTestExpectation?
+    
+    var asyncExpectationDidStateUpdate: XCTestExpectation?
+    var asyncExpectationDidDiscoverNewPeripheral: XCTestExpectation?
     
     override init() {
         super.init()
@@ -63,12 +72,12 @@ public class KKCentralManagerUnderTest: NSObject, KKCentralManagerProtocolDelega
     
     func didDiscoverNewPeripheral(peripheral: CBPeripheral) {
         anyPeripheral = peripheral
-        asyncExpectation?.fulfill()
+        asyncExpectationDidStateUpdate?.fulfill()
     }
     
     func didStateUpdate(managerState: KKCentralManagerStateType) {
         state = managerState
-        asyncExpectation?.fulfill()
+        asyncExpectationDidStateUpdate?.fulfill()
     }
     
     func didConnectKKPerephiralType(perephiralType: KKCentralManagerPerephiralType) {
@@ -76,19 +85,4 @@ public class KKCentralManagerUnderTest: NSObject, KKCentralManagerProtocolDelega
     }
 }
 
-extension KKCentralManagerStateType: Equatable {
-}
 
-func ==(lhs: KKCentralManagerStateType, rhs: KKCentralManagerStateType) -> Bool {
-    switch (lhs, rhs) {
-    case (.BLEOn, .BLEOn):
-        return true
-    case (.BLEOff, .BLEOff):
-        return true
-    case (let .BLEErrorOccur(errorLhs), let .BLEErrorOccur(errorRhs) ):
-        return errorLhs.code == errorRhs.code
-    default:
-        break
-    }
-    return false
-}

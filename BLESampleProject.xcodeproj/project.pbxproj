@@ -12,18 +12,19 @@
 		410F48D11D06E701000C0C05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410F48CF1D06E701000C0C05 /* Main.storyboard */; };
 		410F48D31D06E701000C0C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410F48D21D06E701000C0C05 /* Assets.xcassets */; };
 		410F48D61D06E701000C0C05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410F48D41D06E701000C0C05 /* LaunchScreen.storyboard */; };
-		410F48E11D06E701000C0C05 /* BLESampleProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410F48E01D06E701000C0C05 /* BLESampleProjectUITests.swift */; };
 		410F48EC1D06E72F000C0C05 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410F48EB1D06E72F000C0C05 /* Default-568h@2x.png */; };
 		4155B5291D06EEC700B9B73E /* PureLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4155B5281D06EEC700B9B73E /* PureLayout.framework */; };
 		4155B52B1D0703EF00B9B73E /* KKCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4155B52A1D0703EF00B9B73E /* KKCentralManager.swift */; };
 		4155B52D1D07041700B9B73E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4155B52C1D07041700B9B73E /* CoreBluetooth.framework */; };
 		4155B52F1D0718B100B9B73E /* KKTableViewDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4155B52E1D0718B100B9B73E /* KKTableViewDataProvider.swift */; };
+		41701CCF1D09845100702FBC /* BLESampleProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41701CCE1D09845100702FBC /* BLESampleProjectTests.swift */; };
+		41701CD61D09846900702FBC /* KKCentralManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41701CC61D097BBB00702FBC /* KKCentralManagerTests.swift */; };
 		4194FB211D0891D100CBC5EC /* KKDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4194FB201D0891D100CBC5EC /* KKDevicesViewController.swift */; };
 		8381FE3A1D0775CD008B47A9 /* KKTableViewDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381FE391D0775CD008B47A9 /* KKTableViewDeviceCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		410F48DD1D06E701000C0C05 /* PBXContainerItemProxy */ = {
+		41701CD11D09845100702FBC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 410F48C01D06E701000C0C05 /* Project object */;
 			proxyType = 1;
@@ -40,14 +41,15 @@
 		410F48D21D06E701000C0C05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		410F48D51D06E701000C0C05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		410F48D71D06E701000C0C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		410F48DC1D06E701000C0C05 /* BLESampleProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLESampleProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		410F48E01D06E701000C0C05 /* BLESampleProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLESampleProjectUITests.swift; sourceTree = "<group>"; };
-		410F48E21D06E701000C0C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		410F48EB1D06E72F000C0C05 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4155B5281D06EEC700B9B73E /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = Carthage/Build/iOS/PureLayout.framework; sourceTree = "<group>"; };
 		4155B52A1D0703EF00B9B73E /* KKCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKCentralManager.swift; sourceTree = "<group>"; };
 		4155B52C1D07041700B9B73E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		4155B52E1D0718B100B9B73E /* KKTableViewDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKTableViewDataProvider.swift; sourceTree = "<group>"; };
+		41701CC61D097BBB00702FBC /* KKCentralManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KKCentralManagerTests.swift; path = ../BLESampleProjectUITests/KKCentralManagerTests.swift; sourceTree = "<group>"; };
+		41701CCC1D09845100702FBC /* BLESampleProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLESampleProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41701CCE1D09845100702FBC /* BLESampleProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLESampleProjectTests.swift; sourceTree = "<group>"; };
+		41701CD01D09845100702FBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4194FB201D0891D100CBC5EC /* KKDevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDevicesViewController.swift; sourceTree = "<group>"; };
 		8381FE391D0775CD008B47A9 /* KKTableViewDeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKTableViewDeviceCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,7 +64,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		410F48D91D06E701000C0C05 /* Frameworks */ = {
+		41701CC91D09845100702FBC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -79,7 +81,7 @@
 				4155B5281D06EEC700B9B73E /* PureLayout.framework */,
 				410F48EB1D06E72F000C0C05 /* Default-568h@2x.png */,
 				410F48CA1D06E701000C0C05 /* BLESampleProject */,
-				410F48DF1D06E701000C0C05 /* BLESampleProjectUITests */,
+				41701CCD1D09845100702FBC /* BLESampleProjectTests */,
 				410F48C91D06E701000C0C05 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,7 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				410F48C81D06E701000C0C05 /* BLESampleProject.app */,
-				410F48DC1D06E701000C0C05 /* BLESampleProjectUITests.xctest */,
+				41701CCC1D09845100702FBC /* BLESampleProjectTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,13 +112,14 @@
 			path = BLESampleProject;
 			sourceTree = "<group>";
 		};
-		410F48DF1D06E701000C0C05 /* BLESampleProjectUITests */ = {
+		41701CCD1D09845100702FBC /* BLESampleProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				410F48E01D06E701000C0C05 /* BLESampleProjectUITests.swift */,
-				410F48E21D06E701000C0C05 /* Info.plist */,
+				41701CC61D097BBB00702FBC /* KKCentralManagerTests.swift */,
+				41701CCE1D09845100702FBC /* BLESampleProjectTests.swift */,
+				41701CD01D09845100702FBC /* Info.plist */,
 			);
-			path = BLESampleProjectUITests;
+			path = BLESampleProjectTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,23 +143,23 @@
 			productReference = 410F48C81D06E701000C0C05 /* BLESampleProject.app */;
 			productType = "com.apple.product-type.application";
 		};
-		410F48DB1D06E701000C0C05 /* BLESampleProjectUITests */ = {
+		41701CCB1D09845100702FBC /* BLESampleProjectTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 410F48E81D06E701000C0C05 /* Build configuration list for PBXNativeTarget "BLESampleProjectUITests" */;
+			buildConfigurationList = 41701CD31D09845100702FBC /* Build configuration list for PBXNativeTarget "BLESampleProjectTests" */;
 			buildPhases = (
-				410F48D81D06E701000C0C05 /* Sources */,
-				410F48D91D06E701000C0C05 /* Frameworks */,
-				410F48DA1D06E701000C0C05 /* Resources */,
+				41701CC81D09845100702FBC /* Sources */,
+				41701CC91D09845100702FBC /* Frameworks */,
+				41701CCA1D09845100702FBC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				410F48DE1D06E701000C0C05 /* PBXTargetDependency */,
+				41701CD21D09845100702FBC /* PBXTargetDependency */,
 			);
-			name = BLESampleProjectUITests;
-			productName = BLESampleProjectUITests;
-			productReference = 410F48DC1D06E701000C0C05 /* BLESampleProjectUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
+			name = BLESampleProjectTests;
+			productName = BLESampleProjectTests;
+			productReference = 41701CCC1D09845100702FBC /* BLESampleProjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -170,8 +173,9 @@
 				TargetAttributes = {
 					410F48C71D06E701000C0C05 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = W494VD6ZWM;
 					};
-					410F48DB1D06E701000C0C05 = {
+					41701CCB1D09845100702FBC = {
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 410F48C71D06E701000C0C05;
 					};
@@ -191,7 +195,7 @@
 			projectRoot = "";
 			targets = (
 				410F48C71D06E701000C0C05 /* BLESampleProject */,
-				410F48DB1D06E701000C0C05 /* BLESampleProjectUITests */,
+				41701CCB1D09845100702FBC /* BLESampleProjectTests */,
 			);
 		};
 /* End PBXProject section */
@@ -208,7 +212,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		410F48DA1D06E701000C0C05 /* Resources */ = {
+		41701CCA1D09845100702FBC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -248,21 +252,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		410F48D81D06E701000C0C05 /* Sources */ = {
+		41701CC81D09845100702FBC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				410F48E11D06E701000C0C05 /* BLESampleProjectUITests.swift in Sources */,
+				41701CCF1D09845100702FBC /* BLESampleProjectTests.swift in Sources */,
+				41701CD61D09846900702FBC /* KKCentralManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		410F48DE1D06E701000C0C05 /* PBXTargetDependency */ = {
+		41701CD21D09845100702FBC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 410F48C71D06E701000C0C05 /* BLESampleProject */;
-			targetProxy = 410F48DD1D06E701000C0C05 /* PBXContainerItemProxy */;
+			targetProxy = 41701CD11D09845100702FBC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -375,6 +380,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -391,6 +397,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -403,25 +410,35 @@
 			};
 			name = Release;
 		};
-		410F48E91D06E701000C0C05 /* Debug */ = {
+		41701CD41D09845100702FBC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = BLESampleProjectUITests/Info.plist;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BLESampleProjectTests",
+				);
+				INFOPLIST_FILE = BLESampleProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = kos.BLESampleProjectUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = kos.BLESampleProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = BLESampleProject;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BLESampleProject.app/BLESampleProject";
 			};
 			name = Debug;
 		};
-		410F48EA1D06E701000C0C05 /* Release */ = {
+		41701CD51D09845100702FBC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = BLESampleProjectUITests/Info.plist;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BLESampleProjectTests",
+				);
+				INFOPLIST_FILE = BLESampleProjectTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = kos.BLESampleProjectUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = kos.BLESampleProjectTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = BLESampleProject;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BLESampleProject.app/BLESampleProject";
 			};
 			name = Release;
 		};
@@ -446,14 +463,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		410F48E81D06E701000C0C05 /* Build configuration list for PBXNativeTarget "BLESampleProjectUITests" */ = {
+		41701CD31D09845100702FBC /* Build configuration list for PBXNativeTarget "BLESampleProjectTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				410F48E91D06E701000C0C05 /* Debug */,
-				410F48EA1D06E701000C0C05 /* Release */,
+				41701CD41D09845100702FBC /* Debug */,
+				41701CD51D09845100702FBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

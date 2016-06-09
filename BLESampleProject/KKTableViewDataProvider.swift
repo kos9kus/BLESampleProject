@@ -14,17 +14,18 @@ enum DataProviderUpdate<Object> {
 }
 
 protocol KKTableViewDataProviderDelegate: class {
-    associatedtype ObjectForCell
-    func cellIdentiferForObject(object: ObjectForCell) -> String
+    associatedtype Object
+    func cellIdentiferForObject(object: Object) -> String
 }
 
-class KKTableViewDataProvider<Delegate: KKTableViewDataProviderDelegate, Cell: UITableViewCell where Cell: KKTableConfigurableCell, Cell.ObjectCell == Delegate.ObjectForCell>: NSObject, UITableViewDataSource {
+class KKTableViewDataProvider<Delegate: KKTableViewDataProviderDelegate, Cell: UITableViewCell, DataProvider: KKCentralManagerProtocolProvider where Delegate.Object == DataProvider.Object, Cell: KKTableConfigurableCell, Cell.ObjectCell == Delegate.Object>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
-    typealias Data = Delegate.ObjectForCell
+    typealias Data = Delegate.Object
     
-    init(tableView: UITableView, delegate: Delegate) {
+    init(tableView: UITableView, dataProvider: DataProvider, delegate: Delegate) {
         self.tableView = tableView
-        self.delegate = delegate
+        self.delegate = nil
+        self.dataProviderCentral = nil
         super.init()
     }
     
@@ -32,7 +33,7 @@ class KKTableViewDataProvider<Delegate: KKTableViewDataProviderDelegate, Cell: U
         tableView.beginUpdates()
         switch newUpdate {
         case .Delete( _):
-            tableView.deselectRowAtIndexPath(NSIndexPath(forRow: dataArray.count - 1, inSection: 0), animated: false)
+            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: dataArray.count - 1, inSection: 0)], withRowAnimation: .Fade)
             dataArray.removeLast()
             break
         case .Insert(let item):
@@ -44,6 +45,10 @@ class KKTableViewDataProvider<Delegate: KKTableViewDataProviderDelegate, Cell: U
     }
     
     // MARK: UITableViewDataSource 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let object = dataArray[indexPath.row]
+        self.dataProviderCentral.connectPeripheral(object)
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
@@ -65,4 +70,5 @@ class KKTableViewDataProvider<Delegate: KKTableViewDataProviderDelegate, Cell: U
     private let tableView: UITableView
     private var dataArray = [Data]()
     weak var delegate: Delegate!
+    weak var dataProviderCentral: DataProvider!
 }

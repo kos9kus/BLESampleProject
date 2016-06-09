@@ -38,6 +38,16 @@
                ReferencedContainer = "container:BLESampleProject.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "41701CCB1D09845100702FBC"
+               BuildableName = "BLESampleProjectTests.xctest"
+               BlueprintName = "BLESampleProjectTests"
+               ReferencedContainer = "container:BLESampleProject.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

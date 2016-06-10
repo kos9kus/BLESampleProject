@@ -32,7 +32,7 @@ class KKTableViewDataProvider<Delegate: KKTableViewDataProviderDelegate, Cell: U
     func update(newUpdate: DataProviderUpdate<Data>) {
         tableView.beginUpdates()
         switch newUpdate {
-        case .Delete( _):
+        case .Delete(_):
             tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: dataArray.count - 1, inSection: 0)], withRowAnimation: .Fade)
             dataArray.removeLast()
             break
@@ -71,4 +71,5 @@ class KKTableViewDataProvider<Delegate: KKTableViewDataProviderDelegate, Cell: U
     private var dataArray = [Data]()
     weak var delegate: Delegate!
     weak var dataProviderCentral: DataProvider!
+    
 }

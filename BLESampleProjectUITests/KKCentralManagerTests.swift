@@ -26,11 +26,12 @@ class KKCentralManagerTests: XCTestCase {
         
         waitForExpectationsWithTimeout(2) { (error) in
             XCTAssertTrue(self.centralManagerUnderTest.state == .BLEOn)
-            self.centralManagerUnderTest.centralProject.startScanning()
         }
         
         centralManagerUnderTest.asyncExpectationDidStateUpdate = expectationWithDescription("testDidGetNewPeripheral")
-        self.waitForExpectationsWithTimeout(10) { (error) in
+        centralManagerUnderTest.centralProject.startScanning()
+        
+        self.waitForExpectationsWithTimeout(3) { (error) in
             XCTAssert(self.centralManagerUnderTest.anyPeripheral != nil, "")
             print(self.centralManagerUnderTest.anyPeripheral)
         }

@@ -11,6 +11,7 @@
 		410F48CE1D06E701000C0C05 /* KKMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410F48CD1D06E701000C0C05 /* KKMainViewController.swift */; };
 		410F48D31D06E701000C0C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410F48D21D06E701000C0C05 /* Assets.xcassets */; };
 		410F48EC1D06E72F000C0C05 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410F48EB1D06E72F000C0C05 /* Default-568h@2x.png */; };
+		414E4C561D0ACE5C000F1614 /* KKTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414E4C551D0ACE5C000F1614 /* KKTableViewDataSource.swift */; };
 		4155B5291D06EEC700B9B73E /* PureLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4155B5281D06EEC700B9B73E /* PureLayout.framework */; };
 		4155B52B1D0703EF00B9B73E /* KKCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4155B52A1D0703EF00B9B73E /* KKCentralManager.swift */; };
 		4155B52D1D07041700B9B73E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4155B52C1D07041700B9B73E /* CoreBluetooth.framework */; };
@@ -39,6 +40,7 @@
 		410F48D21D06E701000C0C05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		410F48D71D06E701000C0C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		410F48EB1D06E72F000C0C05 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		414E4C551D0ACE5C000F1614 /* KKTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKTableViewDataSource.swift; sourceTree = "<group>"; };
 		4155B5281D06EEC700B9B73E /* PureLayout.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PureLayout.framework; path = Carthage/Build/iOS/PureLayout.framework; sourceTree = "<group>"; };
 		4155B52A1D0703EF00B9B73E /* KKCentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKCentralManager.swift; sourceTree = "<group>"; };
 		4155B52C1D07041700B9B73E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				41701CC61D097BBB00702FBC /* KKCentralManagerTests.swift */,
+				414E4C551D0ACE5C000F1614 /* KKTableViewDataSource.swift */,
 				41701CCE1D09845100702FBC /* BLESampleProjectTests.swift */,
 				41701CD01D09845100702FBC /* Info.plist */,
 			);
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41701CCF1D09845100702FBC /* BLESampleProjectTests.swift in Sources */,
+				414E4C561D0ACE5C000F1614 /* KKTableViewDataSource.swift in Sources */,
 				41701CD61D09846900702FBC /* KKCentralManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

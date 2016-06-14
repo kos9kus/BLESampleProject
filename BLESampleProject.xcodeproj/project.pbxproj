@@ -19,6 +19,8 @@
 		41701CCF1D09845100702FBC /* BLESampleProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41701CCE1D09845100702FBC /* BLESampleProjectTests.swift */; };
 		41701CD61D09846900702FBC /* KKCentralManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41701CC61D097BBB00702FBC /* KKCentralManagerTests.swift */; };
 		4194FB211D0891D100CBC5EC /* KKDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4194FB201D0891D100CBC5EC /* KKDevicesViewController.swift */; };
+		832F36C41D0B5ABF00ECC599 /* KKPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832F36C31D0B5ABF00ECC599 /* KKPeripheral.swift */; };
+		832F36C61D0B65F400ECC599 /* KKPeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832F36C51D0B65F400ECC599 /* KKPeripheralManager.swift */; };
 		8381FE3A1D0775CD008B47A9 /* KKTableViewDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381FE391D0775CD008B47A9 /* KKTableViewDeviceCell.swift */; };
 		8381FE3C1D09F035008B47A9 /* KKViewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381FE3B1D09F035008B47A9 /* KKViewDevices.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +52,8 @@
 		41701CCE1D09845100702FBC /* BLESampleProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLESampleProjectTests.swift; sourceTree = "<group>"; };
 		41701CD01D09845100702FBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4194FB201D0891D100CBC5EC /* KKDevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKDevicesViewController.swift; sourceTree = "<group>"; };
+		832F36C31D0B5ABF00ECC599 /* KKPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPeripheral.swift; sourceTree = "<group>"; };
+		832F36C51D0B65F400ECC599 /* KKPeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKPeripheralManager.swift; sourceTree = "<group>"; };
 		8381FE391D0775CD008B47A9 /* KKTableViewDeviceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKTableViewDeviceCell.swift; sourceTree = "<group>"; };
 		8381FE3B1D09F035008B47A9 /* KKViewDevices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KKViewDevices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,7 +108,9 @@
 				4155B52E1D0718B100B9B73E /* KKTableViewDataProvider.swift */,
 				4194FB201D0891D100CBC5EC /* KKDevicesViewController.swift */,
 				8381FE3B1D09F035008B47A9 /* KKViewDevices.swift */,
+				832F36C31D0B5ABF00ECC599 /* KKPeripheral.swift */,
 				8381FE391D0775CD008B47A9 /* KKTableViewDeviceCell.swift */,
+				832F36C51D0B65F400ECC599 /* KKPeripheralManager.swift */,
 				410F48D21D06E701000C0C05 /* Assets.xcassets */,
 				410F48D71D06E701000C0C05 /* Info.plist */,
 			);
@@ -242,12 +248,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4194FB211D0891D100CBC5EC /* KKDevicesViewController.swift in Sources */,
+				832F36C61D0B65F400ECC599 /* KKPeripheralManager.swift in Sources */,
 				410F48CE1D06E701000C0C05 /* KKMainViewController.swift in Sources */,
 				4155B52B1D0703EF00B9B73E /* KKCentralManager.swift in Sources */,
 				8381FE3A1D0775CD008B47A9 /* KKTableViewDeviceCell.swift in Sources */,
 				4155B52F1D0718B100B9B73E /* KKTableViewDataProvider.swift in Sources */,
 				8381FE3C1D09F035008B47A9 /* KKViewDevices.swift in Sources */,
 				410F48CC1D06E701000C0C05 /* AppDelegate.swift in Sources */,
+				832F36C41D0B5ABF00ECC599 /* KKPeripheral.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

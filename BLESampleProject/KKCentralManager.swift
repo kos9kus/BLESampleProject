@@ -10,14 +10,15 @@ import UIKit
 import CoreBluetooth
 
 protocol KKCentralManagerProtocolDelegate: class {
-    func didDiscoverNewPeripheral(peripheral: CBPeripheral)
+    func didDiscoverNewPeripheral(peripheral: KKPeripheral)
     func didStateUpdate(managerState: KKCentralManagerStateType)
     func didConnectKKPerephiralType(perephiralType:KKCentralManagerPerephiralType)
+    func centralManagerProcessing(enable: Bool)
 }
 
-protocol KKCentralManagerProtocolProvider: class {
+protocol KKManagerProtocolProvider: class {
     associatedtype Object
-    func connectPeripheral(connect: Object)
+    func connectToService(connectToItem: Object)
 }
 
 protocol KKCentralManagerProtocol {
@@ -25,7 +26,7 @@ protocol KKCentralManagerProtocol {
     func stopScanning()
 }
 
-class KKCentralManager<Delegate: KKCentralManagerProtocolDelegate>: NSObject, CBCentralManagerDelegate, KKCentralManagerProtocol, KKCentralManagerProtocolProvider {
+class KKCentralManager<Delegate: KKCentralManagerProtocolDelegate>: NSObject, CBCentralManagerDelegate, KKCentralManagerProtocol, KKManagerProtocolProvider {
     
     init(delegate: Delegate) {
         self.delegate = delegate
@@ -35,15 +36,18 @@ class KKCentralManager<Delegate: KKCentralManagerProtocolDelegate>: NSObject, CB
     
     // MARK - KKCentralManagerProtocol
     func startScanning() {
+        delegate.centralManagerProcessing(true)
         centralManager.scanForPeripheralsWithServices(nil, options: nil)
     }
     
     func stopScanning() {
+        delegate.centralManagerProcessing(false)
         centralManager.stopScan()
     }
     
-    func connectPeripheral(peripheral: CBPeripheral) {
-        centralManager.connectPeripheral(peripheral, options: nil)
+    func connectToService(connectToItem: KKPeripheral) {
+        delegate.centralManagerProcessing(true)
+        centralManager.connectPeripheral(connectToItem.object, options: nil)
     }
     
     // MARK - CBCentralManager delegate
@@ -68,28 +72,33 @@ class KKCentralManager<Delegate: KKCentralManagerProtocolDelegate>: NSObject, CB
         }
         print("peripheral devices + \(peripheral.name)"  )
         print("advertisementData  \(advertisementData)" )
-        delegate.didDiscoverNewPeripheral(peripheral)
+        
+        let item = KKPeripheral(name: peripheral.name, udid: peripheral.identifier.UUIDString, proximity: RSSI.stringValue, object: peripheral)
+        delegate.didDiscoverNewPeripheral(item)
     }
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
         guard centralManager == central else {
             return
         }
-        delegate.didConnectKKPerephiralType(.didConnect(peripheral: peripheral))
+        delegate.didConnectKKPerephiralType(.DidConnect(peripheral: peripheral))
+        delegate.centralManagerProcessing(false)
     }
     
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         guard centralManager == central else {
             return
         }
-        delegate.didConnectKKPerephiralType(.didDisconnect(peripheral: peripheral))
+        delegate.didConnectKKPerephiralType(.DidDisconnect(peripheral: peripheral))
+        delegate.centralManagerProcessing(false)
     }
     
     func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         guard centralManager == central else {
             return
         }
-        delegate.didConnectKKPerephiralType(.didFailedConnectPeripheral(peripheral: peripheral))
+        delegate.didConnectKKPerephiralType(.DidFailedConnectPeripheral(peripheral: peripheral))
+        delegate.centralManagerProcessing(false)
     }
     
     // MARK: Private
@@ -99,9 +108,9 @@ class KKCentralManager<Delegate: KKCentralManagerProtocolDelegate>: NSObject, CB
 }
 
 enum KKCentralManagerPerephiralType {
-    case didConnect(peripheral: CBPeripheral)
-    case didDisconnect(peripheral: CBPeripheral)
-    case didFailedConnectPeripheral(peripheral: CBPeripheral)
+    case DidConnect(peripheral: CBPeripheral)
+    case DidDisconnect(peripheral: CBPeripheral)
+    case DidFailedConnectPeripheral(peripheral: CBPeripheral)
 }
 
 enum KKCentralManagerStateType {

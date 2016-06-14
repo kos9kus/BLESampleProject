@@ -14,40 +14,59 @@ enum DataProviderUpdate<Object> {
 }
 
 protocol KKTableViewDataProviderDelegate: class {
-    associatedtype Object
+    associatedtype Object: Equatable
     func cellIdentiferForObject(object: Object) -> String
 }
 
-class KKTableViewDataProvider<Delegate: KKTableViewDataProviderDelegate, Cell: UITableViewCell, DataProvider: KKCentralManagerProtocolProvider where Delegate.Object == DataProvider.Object, Cell: KKTableConfigurableCell, Cell.ObjectCell == Delegate.Object>: NSObject, UITableViewDataSource, UITableViewDelegate {
+class KKTableViewDataProvider<Delegate: KKTableViewDataProviderDelegate, Cell: UITableViewCell, DataProvider: KKManagerProtocolProvider where Delegate.Object == DataProvider.Object, Cell: KKTableConfigurableCell, Cell.ObjectCell == Delegate.Object>: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     typealias Data = Delegate.Object
     
     init(tableView: UITableView, dataProvider: DataProvider, delegate: Delegate) {
         self.tableView = tableView
-        self.delegate = nil
-        self.dataProviderCentral = nil
+        self.delegate = delegate
+        self.dataProviderCentral = dataProvider
         super.init()
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
+    // MARK: - Public
+    
+    func cleanUp() {
+        guard self.dataArray.count > 0 else {
+            return
+        }
+        self.dataArray.removeAll()
+        self.tableView.reloadData()
     }
     
     func update(newUpdate: DataProviderUpdate<Data>) {
         tableView.beginUpdates()
         switch newUpdate {
-        case .Delete(_):
-            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: dataArray.count - 1, inSection: 0)], withRowAnimation: .Fade)
-            dataArray.removeLast()
+        case .Delete(let item):
+            var indexForDelete = 0
+            for (indexItem, itemArr) in dataArray.enumerate() {
+                if itemArr == item {
+                    indexForDelete = indexItem
+                }
+            }
+            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexForDelete, inSection: 0)], withRowAnimation: .Fade)
+            dataArray.removeAtIndex(indexForDelete)
             break
         case .Insert(let item):
             dataArray.append(item)
-            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: dataArray.count, inSection: 0)], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: tableView.numberOfRowsInSection(0), inSection: 0)], withRowAnimation: .Fade)
             break
         }
         tableView.endUpdates()
     }
     
     // MARK: UITableViewDataSource 
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let object = dataArray[indexPath.row]
-        self.dataProviderCentral.connectPeripheral(object)
+        self.dataProviderCentral.connectToService(object)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,7 +88,7 @@ class KKTableViewDataProvider<Delegate: KKTableViewDataProviderDelegate, Cell: U
     
     private let tableView: UITableView
     private var dataArray = [Data]()
-    weak var delegate: Delegate!
-    weak var dataProviderCentral: DataProvider!
+    unowned var delegate: Delegate
+    unowned var dataProviderCentral: DataProvider
     
 }

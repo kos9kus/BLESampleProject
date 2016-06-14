@@ -11,7 +11,7 @@ import UIKit
 class KKViewDevices: UIView {
     
     let statusLabel: UILabel = {
-        let label = UILabel(forAutoLayout: ())
+        let label = UILabel.newAutoLayoutView()
         label.font = UIFont.boldSystemFontOfSize(14)
         label.text = "BLE Status"
         return label
@@ -35,10 +35,12 @@ class KKViewDevices: UIView {
     private var didUpdateLayout = false
     override func updateConstraints() {
         if !didUpdateLayout {
-            statusLabel.autoPinEdgeToSuperviewEdge(.Left)
-            statusLabel.autoPinEdgeToSuperviewEdge(.Right)
+            let arrayView = ([statusLabel, scanButton] as NSArray)
+            arrayView.autoAlignViewsToAxis(.Vertical)
             
-            ([statusLabel, scanButton] as NSArray).autoDistributeViewsAlongAxis(.Vertical, alignedTo: .Vertical, withFixedSpacing: 10, insetSpacing: true)
+            scanButton.autoCenterInSuperview()
+            scanButton.autoPinEdge(.Top, toEdge: .Bottom, ofView: statusLabel, withOffset: 10)
+            
             didUpdateLayout = true
         }
         super.updateConstraints()

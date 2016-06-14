@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreBluetooth
 
 protocol KKTableConfigurableCell {
     associatedtype ObjectCell
@@ -25,8 +24,8 @@ class KKTableViewDeviceCell: UITableViewCell, KKTableConfigurableCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(object: CBPeripheral) {
+    func configureCell(object: KKPeripheral) {
         self.textLabel?.text = object.name
-        self.detailTextLabel?.text = String(object.services?.count) + "Services"
+        self.detailTextLabel?.text = object.proximity
     }
 }

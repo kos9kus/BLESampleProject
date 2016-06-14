@@ -19,8 +19,17 @@ class KKMainViewController: UIViewController {
         return view
     }()
     
+    var genericTitleLabel: UILabel {
+        let label = UILabel.newAutoLayoutView()
+        label.font = UIFont.boldSystemFontOfSize(14)
+        label.textAlignment = .Center
+        label.numberOfLines = 0
+        return label
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerView.addSubview(genericTitleLabel)
         self.view.addSubview(headerView)
         self.view.addSubview(tableView)
         self.view.setNeedsUpdateConstraints()
@@ -29,6 +38,8 @@ class KKMainViewController: UIViewController {
     private var didUpdateConstraint = false
     override func updateViewConstraints() {
         if !didUpdateConstraint {
+            
+            genericTitleLabel.autoPinEdgesToSuperviewMargins()
             
             tableView.autoPinEdgeToSuperviewEdge(.Left)
             tableView.autoPinEdgeToSuperviewEdge(.Right)
@@ -41,12 +52,16 @@ class KKMainViewController: UIViewController {
     }
 }
 
-extension KKMainViewController {
+extension UIViewController {
     func alertViewController(message: String) {
         let alertController = UIAlertController(title: "BLE", message: message, preferredStyle: .Alert)
         let actionOk = UIAlertAction(title: "Dismiss", style: .Default, handler: nil)
         alertController.addAction(actionOk)
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func enableLoadingIndeicatorProcessing(enable: Bool) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = enable
     }
 }
 
